@@ -2,8 +2,6 @@ import shutil
 import os
 from flask import Flask, render_template, redirect, request, session, url_for, send_file, send_from_directory
 import sqlite3
-import pandas as pd
-import io
 
 
 from models import init_db, get_user, add_entry, add_exit, get_stock, get_history
