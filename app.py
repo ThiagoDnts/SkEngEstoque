@@ -33,19 +33,25 @@ def relatorio_excel():
         return redirect(url_for('login'))
 
     conn = sqlite3.connect('database.db')
-    df = pd.read_sql_query("SELECT * FROM movimentacoes ORDER BY data DESC", conn)
+    c = conn.cursor()
+    c.execute("SELECT * FROM movimentacoes ORDER BY data DESC")
+    dados = c.fetchall()
+    colunas = [description[0] for description in c.description]
     conn.close()
 
-    output = io.BytesIO()
-    with pd.ExcelWriter(output, engine='openpyxl') as writer:
-        df.to_excel(writer, index=False, sheet_name='Movimentacoes')
+    output = io.StringIO()
+    import csv
+    writer = csv.writer(output)
+    writer.writerow(colunas)
+    writer.writerows(dados)
 
     output.seek(0)
-
-    return send_file(output,
-                     download_name="relatorio_estoque.xlsx",
-                     as_attachment=True,
-                     mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    return send_file(
+        io.BytesIO(output.getvalue().encode()),
+        mimetype='text/csv',
+        as_attachment=True,
+        download_name='relatorio_estoque.csv'
+    )
 
 @app.route('/backup')
 def backup():
