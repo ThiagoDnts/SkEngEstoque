@@ -1,0 +1,173 @@
+/* style.css */
+/* Ajustes gerais do body */
+body {
+  background-color: #fff; /* fundo branco */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #000; /* texto preto */
+}
+
+/* Container principal */
+.container {
+  margin-top: 20px;
+}
+
+/* Formularios */
+form input,
+form select,
+form textarea {
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease-in-out;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #d90429; /* vermelho forte */
+  outline: none;
+  box-shadow: 0 0 5px rgba(217, 4, 41, 0.5);
+}
+
+/* Botões personalizados */
+.btn-primary {
+  background-color: #d90429; /* vermelho */
+  border-color: #d90429;
+  transition: background-color 0.3s ease;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #a10321; /* vermelho mais escuro */
+  border-color: #a10321;
+  color: #fff;
+}
+
+/* Botão vermelho para ações importantes */
+.btn-danger {
+  background-color: #000; /* preto */
+  border-color: #000;
+  color: #d90429; /* texto vermelho */
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #d90429;
+  border-color: #d90429;
+  color: #fff;
+}
+
+/* Tabela */
+.table {
+  background-color: #fff;
+}
+
+.table thead th {
+  background-color: #000; /* cabeçalho preto */
+  color: #d90429; /* texto vermelho */
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f8d7da; /* leve fundo vermelho claro ao passar o mouse */
+}
+
+/* Navbar customizações */
+.navbar {
+  background-color: #000; /* preto */
+  box-shadow: 0 2px 4px rgba(217, 4, 41, 0.5); /* sombra vermelho */
+  
+  height: 70px; /* altura fixa */
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+  align-items: center; /* verticalmente centralizado */
+}
+
+/* Logo maior, sem aumentar a navbar */
+.navbar-brand img.logo-img {
+  height: 60px; /* Ajuste o tamanho aqui para o logo */
+  width: auto;
+  display: block;
+  margin-top: 5px; /* ajuste se precisar */
+}
+
+/* Navbar texto e links */
+.navbar .navbar-brand,
+.navbar .nav-link,
+.navbar .navbar-text {
+  color: #fff !important; /* branco */
+}
+
+.navbar .nav-link:hover {
+  color: #d90429 !important; /* vermelho ao passar o mouse */
+}
+
+/* Responsividade navbar */
+@media (max-width: 992px) {
+  .navbar-nav {
+    text-align: center;
+  }
+  .navbar-nav .nav-item {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Estilo do menu hamburger aberto */
+.navbar-collapse.collapse.show {
+  background-color: #000; /* fundo preto sólido */
+  padding: 1rem;          /* espaçamento interno */
+  border-radius: 0 0 8px 8px; /* cantos arredondados embaixo */
+  box-shadow: 0 4px 8px rgba(217, 4, 41, 0.5); /* sombra vermelho */
+  z-index: 9999;          /* sobreposto a outros elementos */
+  transition: background-color 0.1s ease;
+}
+
+/* Links no menu hamburger */
+.navbar-collapse .nav-link {
+  color: #fff !important;
+  padding: 0.5rem 1rem;
+}
+
+/* Hover nos links do menu hamburger */
+.navbar-collapse .nav-link:hover {
+  color: #d90429 !important;
+  background-color: rgba(217, 4, 41, 0.1);
+  border-radius: 4px;
+}
+
+/* Alertas */
+.alert-info {
+  border-radius: 0.25rem;
+  font-weight: 500;
+  background-color: #f8d7da; /* leve vermelho */
+  color: #721c24; /* texto escuro */
+  border: 1px solid #f5c6cb;
+}
+
+/* Espaçamento dos links na navbar */
+.navbar-nav .nav-link {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Pequeno ajuste no texto do usuário */
+.navbar-text {
+  font-weight: 600;
+}
+
+/* Ícones bootstrap: aumenta o tamanho para melhor visualização */
+.bi {
+  font-size: 1.2rem;
+}
+
+/* Botão sair com cor personalizada */
+.nav-link.btn-logout {
+  color: #d90429 !important;
+  font-weight: 600;
+}
+
+.nav-link.btn-logout:hover {
+  color: #a10321 !important;
+  text-decoration: underline;
+}

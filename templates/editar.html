@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4" style="max-width: 600px;">
+  <h3>Editar Movimentação #{{ mov[0] }}</h3>
+  <form method="POST">
+    <label>Tipo:</label>
+    <select name="tipo" class="form-select mb-2" required>
+      <option value="entrada" {% if mov[1] == 'entrada' %}selected{% endif %}>Entrada</option>
+      <option value="saida" {% if mov[1] == 'saida' %}selected{% endif %}>Saída</option>
+    </select>
+
+    <input class="form-control mb-2" name="material" value="{{ mov[2] }}" placeholder="Material" required>
+    <input class="form-control mb-2" type="number" name="quantidade" value="{{ mov[3] }}" placeholder="Quantidade" required>
+    <input class="form-control mb-2" type="number" step="0.01" name="valor" value="{{ mov[4] }}" placeholder="Valor" required>
+    <input class="form-control mb-2" name="data" value="{{ mov[5] }}" placeholder="Data (YYYY-MM-DD)" required>
+
+    <input class="form-control mb-2" name="quem_colocou" value="{{ mov[6] }}" placeholder="Quem colocou (se entrada)">
+    <input class="form-control mb-2" name="quem_retirou" value="{{ mov[7] }}" placeholder="Quem retirou (se saída)">
+    <input class="form-control mb-2" name="equipe" value="{{ mov[8] }}" placeholder="Equipe Técnica" required>
+
+    <button class="btn btn-primary">Salvar</button>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary ms-2">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

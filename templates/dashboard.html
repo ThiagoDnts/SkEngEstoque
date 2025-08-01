@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Dashboard - Controle de Estoque</h2>
+
+<div class="d-flex justify-content-between mb-3">
+    <div>
+        <a href="{{ url_for('entrada') }}" class="btn btn-success me-2">Registrar Entrada</a>
+        <a href="{{ url_for('saida') }}" class="btn btn-danger">Registrar Saída</a>
+        <a href="{{ url_for('backup') }}" class="btn btn-warning ms-2">Backup do Banco</a> 
+        <a href="{{ url_for('relatorio_excel') }}" class="btn btn-primary">Baixar Relatório Excel</a>
+    </div>
+
+    <a href="{{ url_for('logout') }}" class="btn btn-outline-secondary">Sair</a>
+</div>
+
+<div class="table-responsive shadow-sm rounded">
+    <table class="table table-striped table-hover table-bordered align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Material</th>
+                <th>Tipo</th>
+                <th>Quantidade</th>
+                <th>Valor (R$)</th>
+                <th>Data</th>
+                <th>Responsável</th>
+                <th>Equipe</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in historico %}
+            <tr>
+                <td>{{ item[0] }}</td>
+                <td>{{ item[2] }}</td>
+                <td>{{ item[1] }}</td>
+                <td>{{ item[3] }}</td>
+                <td>{{ '%.2f'|format(item[4]|float) }}</td>
+                <td>{{ item[5] }}</td>
+                <td>
+                    {% if item[1] == 'entrada' %}
+                        {{ item[6] }}
+                    {% else %}
+                        {{ item[7] }}
+                    {% endif %}
+                </td>
+                <td>{{ item[8] }}</td>
+                <td>
+                    <a href="{{ url_for('editar_movimentacao', id=item[0]) }}" class="btn btn-sm btn-primary">Editar</a>
+                    <a href="{{ url_for('excluir_movimentacao', id=item[0]) }}" class="btn btn-sm btn-danger"
+                       onclick="return confirm('Tem certeza que deseja excluir essa movimentação?');">Excluir</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="9" class="text-center">Nenhum registro encontrado.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

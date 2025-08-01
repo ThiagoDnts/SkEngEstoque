@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5" style="max-width: 400px;">
+  <h3 class="mb-3">Criar novo usuário</h3>
+  {% if mensagem %}
+    <div class="alert alert-info">{{ mensagem }}</div>
+  {% endif %}
+  <form method="POST">
+    <input class="form-control mb-2" name="nome" placeholder="Novo usuário" required>
+    <input class="form-control mb-2" type="password" name="senha" placeholder="Senha" required>
+    <button class="btn btn-success w-100">Registrar</button>
+  </form>
+  <div class="mt-3 text-center">
+    <a href="{{ url_for('login') }}">Voltar para o login</a>
+  </div>
+</div>
+{% endblock %}
